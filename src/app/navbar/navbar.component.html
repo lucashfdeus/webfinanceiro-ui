@@ -1,0 +1,49 @@
+<nav class="navbar">
+
+  <div class="container">
+    <div class="p-grid">
+      <div class="p-col-12">
+
+        <p-sidebar [(visible)]="exibindoMenu" position="right">
+
+          <ul class="navbar-menu pi pi-user">
+            <li class="navbar-usuario">Lucas Henrique</li>
+              <li class="navbar-menuitem"><a href="#">Lançamentos</a></li>
+            <li class="navbar-menuitem"><a href="#">Pessoas</a></li>
+            <li class="navbar-menuitem"><a href="#">Logout</a></li>
+          </ul>
+        </p-sidebar>
+
+
+        <button pButton type="button" class="p-mr-2 p-button-rounded navbar-toggle p-button-secondary"
+        (click)="exibindoMenu = true" icon="pi pi-bars"  iconPos="left"></button>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+</nav>
+
+
+<!--
+<nav class="navbar">
+
+  <div class="container">
+    <div class="p-grid">
+      <div class="p-col-12">
+        <a href="javascript:;" class="navbar-toggle" (click)="exibindoMenu = !exibindoMenu"><i class="pi pi-bars"></i></a>
+      </div>
+    </div>
+
+    <ul class="navbar-menu" [hidden]="!exibindoMenu">
+      <li class="navbar-usuario">Lucas Henrique</li>
+      <li class="navbar-menuitem"><a href="#">Lançamentos</a></li>
+      <li class="navbar-menuitem"><a href="#">Pessoas</a></li>
+      <li class="navbar-menuitem"><a href="#">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+ -->

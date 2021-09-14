@@ -1,0 +1,48 @@
+
+.boxvencimento {
+  padding-bottom: 10px;
+}
+.boxpagamento {
+  padding-bottom: 10px;
+}
+
+.vencimento {
+  padding-right: 5px;
+}
+
+.pagamento {
+  padding-right: 8px;
+}
+
+.boxdescricao {
+  padding-bottom: 10px;
+}
+
+.boxvalor {
+  padding-bottom: 10px;
+}
+
+.boxcategoria {
+  padding-bottom: 10px;
+}
+
+.boxpessoa {
+  padding-bottom: 10px;
+}
+
+.btnsalvar {
+  margin-right: 5px;
+}
+
+.btnnovolancamento {
+ position: relative;
+margin-left: 0px;
+}
+
+.btncancelar {
+  margin-right: 5px;
+}
+
+.boxbtn {
+  margin-bottom: 20px;
+}
