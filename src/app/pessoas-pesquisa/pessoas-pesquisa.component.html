@@ -1,28 +1,28 @@
 <div class="container">
-  <div class="p-grid">
+  <div class="grid">
 
-    <div class="p-col-12">
+    <div class="col-12">
       <h1>Pessoas</h1>
     </div>
 
-    <div class="p-col-12 p-fluid">
+    <div class="col-12 p-fluid">
       <label>Nome</label>
       <input pInputText type="text">
     </div>
 
-    <div class="p-col-12">
-      <button pButton type="submit" label="Pesquisar"></button>
+    <div class="col-12">
+      <button pButton type="submit" label="Pesquisar" class="p-button-raised p-button-rounded" icon="pi pi-search"></button>
     </div>
 
-    <div class="p-grid">
-      <div class="p-col-12">
-        <p-table [value]="pessoas" [paginator]="true" [rows]="5" [responsive]="true">
+    <div class="grid">
+      <div class="col-12">
+        <p-table styleClass="p-datatable-sm"[value]="pessoas" [paginator]="true" [rows]="5" [responsive]="true">
           <ng-template pTemplate="header">
             <tr>
               <th>Nome</th>
               <th>Cidade</th>
-              <th>Estado</th>
-              <th>Status</th>
+              <th class="col-estado">Estado</th>
+              <th class="col-status">Status</th>
               <th class="col-acoes-header"></th>
             </tr>
           </ng-template>
@@ -39,12 +39,12 @@
                 {{pessoa.cidade}}
               </td>
 
-              <td>
+              <td class="col-estado">
                 <span class="p-column-title">Estado</span>
                 {{pessoa.estado}}
               </td>
 
-              <td>
+              <td class="col-status">
                 <span class="p-column-title">Status</span>
                 <a href="#" [pTooltip]="pessoa.ativo ? 'Desativar' : 'Ativar' " tooltipPosition="top">
                   {{pessoa.ativo ? 'Ativo' : 'Inativo'}}
@@ -53,9 +53,9 @@
 
               <td class="col-acoes">
                 <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
-                  class="p-button-raised p-button-rounded p-button-warning"></a>
+                  class="p-button-sm p-button-rounded p-button-warning"></a>
                 <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
-                  class="p-button-raised p-button-rounded p-button-danger"></button>
+                  class="p-button-sm p-button-rounded p-button-danger"></button>
               </td>
             </tr>
           </ng-template>
@@ -72,8 +72,8 @@
       </div>
     </div>
 
-    <div class="p-col-12">
-      <button pButton type="submit" label="Cadastrar Pessoa"></button>
+    <div class="col-12">
+      <button pButton type="submit" label="Cadastrar Pessoa" class="p-button-rounded" icon="pi pi-plus"></button>
     </div>
 
   </div>

@@ -16,6 +16,8 @@ import {MessageModule} from 'primeng/message';
 import {DropdownModule} from 'primeng/dropdown';
 import { FormsModule }   from '@angular/forms';
 import {InputTextareaModule} from 'primeng/inputtextarea';
+import {InputNumberModule} from 'primeng/inputnumber';
+
 
 
 import { AppComponent } from './app.component';
@@ -53,7 +55,8 @@ import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-ca
     MessageModule,
     DropdownModule,
     FormsModule,
-    InputTextareaModule
+    InputTextareaModule,
+    InputNumberModule
   ],
   providers: [],
   bootstrap: [AppComponent]

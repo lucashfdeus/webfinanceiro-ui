@@ -1,16 +1,16 @@
 <div class="container">
-  <div class="p-grid">
+  <div class="grid">
 
-    <div class="p-col-12">
+    <div class="col-12">
       <h1>Lançamentos</h1>
     </div>
 
-    <div class="p-col-12 p-fluid">
+    <div class="col-12 p-fluid">
       <label>Descrição</label>
       <input pInputText type="text">
     </div>
 
-    <div class="p-col-12">
+    <div class="col-12">
       <label style="display: block">Vencimento</label>
       <input pInputText type="text" style="width: 95px">
 
@@ -18,13 +18,13 @@
       <input pInputText type="text" style="width: 95px">
     </div>
 
-    <div class="p-col-12">
-      <button pButton type="submit" label="Pesquisar"></button>
+    <div class="col-12">
+      <button pButton type="submit" label="Pesquisar"  class="p-button-raised p-button-rounded" icon="pi pi-search"></button>
     </div>
 
     <div class="p-grid">
-      <div class="p-col-12">
-        <p-table [value]="lancamentos" [paginator]="true" [rows]="5" [responsive]="true">
+      <div class="col-12">
+        <p-table styleClass="p-datatable-sm" [value]="lancamentos" [paginator]="true" [rows]="5" [responsive]="true">
           <ng-template pTemplate="header">
             <tr>
               <th>Pessoa</th>
@@ -66,11 +66,10 @@
               </td>
 
               <td class="col-acoes">
-                <span class="p-column-title"></span>
                 <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
-                  class="p-button-raised p-button-rounded p-button-warning"></a>
+                  class="p-button-sm p-button-rounded p-button-warning"></a>
                 <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
-                  class="p-button-raised p-button-rounded p-button-danger"></button>
+                  class="p-button-sm p-button-rounded p-button-danger"></button>
               </td>
 
             </tr>
@@ -79,8 +78,8 @@
       </div>
 
 
-      <div class="p-col-12">
-        <button pButton type="submit" label="Novo Lançamento"></button>
+      <div class="col-12">
+        <button pButton type="submit" label="Novo Lançamento" class="p-button-rounded" icon="pi pi-plus"></button>
       </div>
 
     </div>

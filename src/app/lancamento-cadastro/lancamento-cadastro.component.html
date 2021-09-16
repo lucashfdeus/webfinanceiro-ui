@@ -1,58 +1,80 @@
 <div class="container">
   <form>
-    <div class="p-grid">
-      <div class="p-col-12">
+    <div class="card">
+      <div class="col-12">
         <h2>Novo Lançamento</h2>
       </div>
 
-      <div class="p-d-flex">
-        <div class="boxvencimento p-col-6">
-          <label class="vencimento">Vencimento</label>
-          <input pInputText type="text">
+      <div class="boxselecao">
+        <p-selectButton [options]="tipos" optionLabel="label" optionValue="value" #tipo></p-selectButton>
+      </div>
+
+      <div class="card">
+        <div class="formgrid grid">
+          <div class="field col-12 md:col-6 lg:col-3 p-fluid">
+            <label>Vencimento</label>
+            <p-calendar [(ngModel)]="date1" [showIcon]="true" [inline]="false" inputId="icon" dateFormat="dd/mm/yy"
+              inputId="dateformat" name="calendar1">
+            </p-calendar>
+          </div>
+
+          <div class="field col-12 md:col-6 lg:col-3 p-fluid">
+            <label>{{ tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento' }}</label>
+            <p-calendar [(ngModel)]="date2" [showIcon]="true" [inline]="false" inputId="icon" dateFormat="dd/mm/yy"
+              inputId="dateformat" name="calendar2">
+            </p-calendar>
+          </div>
+
         </div>
 
-        <div class="boxpagamento p-col-6">
-          <label class="pagamento">Pagamento</label>
-          <input pInputText type="text">
+      </div>
+
+      <div class="card">
+        <div class="formgrid grid">
+          <div class="field col-8 p-fluid">
+            <label>Descrição</label>
+            <input pInputText type="text">
+          </div>
+
+          <div class="field col-4 p-fluid">
+            <label>Valor</label>
+          <p-inputNumber [(ngModel)]="valor" inputId="locale-user" [minFractionDigits]="2" mode="currency" currency="BRL" locale="pt-BR"
+            placeholder="0,00"></p-inputNumber>
+          </div>
         </div>
+
       </div>
 
+      <div class="card">
+        <div class="formgrid grid">
+          <div class="field col-6 p-fluid">
+            <label>Categoria</label>
+            <p-dropdown [options]="categorias" placeholder="Selecione a Categoria" optionLabel="name"
+              [showClear]="true"></p-dropdown>
+          </div>
 
-      <div class="boxdescricao p-col-12 p-md-9 p-fluid">
-        <label>Descrição</label>
-        <input pInputText type="text">
-      </div>
-
-      <div class="boxvalor p-col-12 p-md-3 p-fluid">
-        <label>Valor</label>
-        <input pInputText type="text" placeholder="0,00">
-      </div>
-
-      <div class="boxcategoria p-col-12 p-md-6 p-fluid">
-        <label>Categoria</label>
-        <input pInputText type="text">
-      </div>
-
-      <div class="boxpessoa p-col-12 p-md-6 p-fluid">
-        <label>Pessoa</label>
-        <input pInputText type="text">
+          <div class="field col-6 p-fluid">
+            <label>Pessoa</label>
+            <p-dropdown [options]="pessoas" placeholder="Selecione a Pessoa" optionLabel="name" [showClear]="true"
+              [filter]="true" filterBy="name"></p-dropdown>
+          </div>
+        </div>
       </div>
 
       <div class="p-col-12 p-fluid">
         <label>Observação</label>
-        <textarea pInputTextarea rows="3"></textarea>
+        <textarea pInputTextarea rows="3" class="p-button-rounded"></textarea>
       </div>
 
-      <div class="boxbtn p-col-12">
+      <div class="row">
         <button pButton type="submit" label="Salvar" icon="pi pi-check"
           class="btnsalvar p-button-success p-button-rounded"></button>
 
         <button pButton type="submit" label="Cancelar" icon="pi pi-times"
-          class="btncancelar p-button-danger p-button-rounded"></button>
+          class="btncancelar p-button-danger p-button-rounded "></button>
 
-        <button pButton type="submit" label="Novo Lançamento"
-          class="btnnovolancamento p-button-rounded"></button>
-
+        <button pButton type="submit" label="Novo Lançamento" icon="pi pi-plus"
+          class="float-right p-button-rounded md-6 lg-3"></button>
       </div>
 
     </div>

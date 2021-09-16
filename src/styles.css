@@ -4,54 +4,20 @@ body {
   color: #404C51;
 }
 
-label {
-  font-weight: bold;
-}
-
-@media (min-width: 1200px) {
-  .container {
-    width: 1170px;
-    margin: 0 auto;
-  }
-}
-
 .col-valor-header {
   width: 120px;
+  text-align: center !important;
+
 }
 
 .col-valor {
-  text-align: right !important;
-}
-
-.col-data-header {
-  width: 120px;
+  text-align: center !important;
 }
 
 .col-data {
   text-align: center !important;
 }
 
-.col-acoes-header {
-  width: 115px;
-}
-
-.col-acoes {
-  width: 115px;
-  text-align: center !important;
-}
-
-.col-acoes .p-button {
-  margin: 1px;
-}
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #404C51;
-}
-
-label {
-  font-weight: bold;
-}
 
 @media (min-width: 1200px) {
   .container {
@@ -59,18 +25,16 @@ label {
       margin: 0 auto;
   }
 }
+@media (max-width: 1200px) {
+  .container{
+    padding: 2px;
+    margin: 6px;
+  }
+}
 
 .label {
+  font-weight: bold;
   margin: 0.5em;
-}
-
-.col-valor-header {
-  width: 120px;
-  text-align: center !important;
-}
-
-.col-valor-content {
-  text-align: center !important ;
 }
 
 .col-data-header {
@@ -80,18 +44,23 @@ label {
 .col-data-content {
   text-align: center !important;
 }
-
-.col-acoes-header {
-  width: 115px;
-}
-
 .col-acoes {
+  margin: 1px;
   width: 115px;
   text-align: center !important;
 }
 
-.col-acoes .p-button {
-  margin: 1px;
+a {
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  text-decoration: underline;
+}
+
+a.p-button:hover,
+a.p-button:focus {
+  text-decoration: none;
 }
 
 .p-sidebar-right {
@@ -100,4 +69,11 @@ label {
   width: 15rem !important;
   height: 100%;
   background-color: #464341 !important;
+}
+
+.p-inputtext{
+  border-radius: 13px;
+}
+.p-ripple, .p-element, .p-button, .p-component, .ng-star-inserted{
+  border-radius: 13px;
 }
