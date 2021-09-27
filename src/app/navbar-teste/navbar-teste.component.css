@@ -1,0 +1,74 @@
+.navbar {
+  padding:20px;
+  background-color: #1e94d2;
+   padding: 5px 5px;
+}
+
+ .navbar-toggle {
+  background-color: transparent;
+
+}
+
+.navbar-menu {
+  position: fixed;
+  margin: 0;
+  top: 30px;
+  bottom: 0;
+  right: 0;
+  padding: 0;
+  width: 240px;
+  /* background-color: #464341; */
+  z-index: 9998;
+  list-style: none;
+}
+
+
+.navbar-usuario {
+  padding: 12px;
+  border-bottom: 2px solid #fff;
+  margin-bottom: 15px;
+  padding-left: 35px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff;
+}
+
+/*Icone usuário nome*/
+.pi-user:before{
+  position: fixed;
+  padding-top: 12px;
+  padding-left: 11px;
+  color: #fff
+}
+
+.navbar-menuitem {
+  padding: 10px;
+  color: #fff;
+}
+
+.navbar-menuitem a {
+  text-decoration: none;
+  color:#a5a2a0;
+}
+
+.navbar-menuitem a:hover {
+  color: #fff;
+}
+
+/*Icone seta esquerda*/
+.p-mr-2 {
+  top: 0px;
+  margin-bottom: 5px;
+  margin-left: 95%;
+}
+
+/* modificação do pi-bars para transparente */
+.p-button.p-button-secondary, .p-buttonset.p-button-secondary > .p-button, .p-splitbutton.p-button-secondary > .p-button {
+  color: #ffffff;
+  background: transparent;
+  border: transparent !important;
+}
+
+.app-navbar {
+  position: fixed;
+}

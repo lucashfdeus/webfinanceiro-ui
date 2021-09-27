@@ -1,72 +1,76 @@
 <div class="container">
   <form>
-    <div class="card">
+    <div class="card grid">
+
       <div class="col-12">
         <h2>Novo Lançamento</h2>
       </div>
 
-      <div class="boxselecao">
-        <p-selectButton [options]="tipos" optionLabel="label" optionValue="value" #tipo></p-selectButton>
+      <div class="col-12">
+        <p-selectButton [options]="tipos" #tipo></p-selectButton>
       </div>
 
-      <div class="card">
-        <div class="formgrid grid">
-          <div class="field col-12 md:col-6 lg:col-3 p-fluid">
-            <label>Vencimento</label>
-            <p-calendar [(ngModel)]="date1" [showIcon]="true" [inline]="false" inputId="icon" dateFormat="dd/mm/yy"
-              inputId="dateformat" name="calendar1">
-            </p-calendar>
-          </div>
+      <div class="col-12 md:col-6 lg:col-3 p-fluid">
+        <label>Vencimento</label>
+        <p-calendar [showIcon]="true" [inline]="false" inputId="icon" dateFormat="dd/mm/yy" inputId="dateformat"
+          name="calendar1">
+        </p-calendar>
+      </div>
 
-          <div class="field col-12 md:col-6 lg:col-3 p-fluid">
-            <label>{{ tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento' }}</label>
-            <p-calendar [(ngModel)]="date2" [showIcon]="true" [inline]="false" inputId="icon" dateFormat="dd/mm/yy"
-              inputId="dateformat" name="calendar2">
-            </p-calendar>
-          </div>
+      <div class="col-12 md:col-6 lg:col-3 p-fluid">
+        <label>{{ tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento' }}</label>
+        <p-calendar [showIcon]="true" [inline]="false" inputId="icon" dateFormat="dd/mm/yy" inputId="dateformat"
+          name="calendar2">
+        </p-calendar>
+      </div>
 
-        </div>
+      <div class="col-8 p-fluid">
+        <!-- <label>Descrição {{ descricao.errors | json }}</label> para DEBUG-->
+        <label>Descrição</label>
+        <input pInputText type="text" name="descricao" ngModel #descricao="ngModel" required minlength="5">
+
+        <app-message [control]="descricao" error="required" text="Informe uma descrição."></app-message>
+
+
+        <app-message [control]="descricao" error="minlength" text="Mínimo de {{ descricao.errors?.minlength?.requiredLength }} caracteres"></app-message>
+
+        <!--
+        <div *ngIf="descricao.hasError('required') && descricao.dirty" class="p-error">
+          Informe uma descrição!
+        </div> -->
+
+        <!-- <div *ngIf="descricao.hasError('minlength') && descricao.dirty" class="p-error">
+          Mínimo de {{ descricao.errors?.minlength.requiredLength }} caracteres. Você digitou apenas
+          {{ descricao.errors?.minlength.actualLength }}.
+        </div> -->
 
       </div>
 
-      <div class="card">
-        <div class="formgrid grid">
-          <div class="field col-8 p-fluid">
-            <label>Descrição</label>
-            <input pInputText type="text">
-          </div>
-
-          <div class="field col-4 p-fluid">
-            <label>Valor</label>
-          <p-inputNumber [(ngModel)]="valor" inputId="locale-user" [minFractionDigits]="2" mode="currency" currency="BRL" locale="pt-BR"
-            placeholder="0,00"></p-inputNumber>
-          </div>
-        </div>
-
+      <div class="col-4 p-fluid">
+        <label>Valor</label>
+        <p-inputNumber inputId="locale-user" [minFractionDigits]="2" mode="currency" currency="BRL" locale="pt-BR"
+          placeholder="0,00" name="valor" ngModel #valor="ngModel" required ></p-inputNumber>
       </div>
 
-      <div class="card">
-        <div class="formgrid grid">
-          <div class="field col-6 p-fluid">
-            <label>Categoria</label>
-            <p-dropdown [options]="categorias" placeholder="Selecione a Categoria" optionLabel="name"
-              [showClear]="true"></p-dropdown>
-          </div>
-
-          <div class="field col-6 p-fluid">
-            <label>Pessoa</label>
-            <p-dropdown [options]="pessoas" placeholder="Selecione a Pessoa" optionLabel="name" [showClear]="true"
-              [filter]="true" filterBy="name"></p-dropdown>
-          </div>
-        </div>
+      <div class="field col-6 p-fluid">
+        <label>Categoria</label>
+        <p-dropdown [options]="categorias" placeholder="Selecione uma Categoria" optionLabel="label" [showClear]="true">
+        </p-dropdown>
       </div>
 
-      <div class="p-col-12 p-fluid">
+      <div class="field col-6 p-fluid">
+        <label>Pessoa</label>
+        <p-dropdown [options]="pessoas" placeholder="Selecione uma Pessoa" optionLabel="label" [showClear]="true"
+          [filter]="true" filterBy="label"></p-dropdown>
+      </div>
+
+
+      <div class="col-12 p-fluid">
         <label>Observação</label>
         <textarea pInputTextarea rows="3" class="p-button-rounded"></textarea>
       </div>
 
-      <div class="row">
+      <div class="row col-12">
         <button pButton type="submit" label="Salvar" icon="pi pi-check"
           class="btnsalvar p-button-success p-button-rounded"></button>
 

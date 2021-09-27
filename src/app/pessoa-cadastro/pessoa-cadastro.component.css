@@ -1,5 +1,6 @@
 .btnsalvar {
   margin: 2px;
+  margin-left: 4px;
   margin-right: 5px;
 }
 
@@ -13,7 +14,7 @@
 }
 
 .float-right {
-  margin: 2px;
+  margin: 4px;
   float: right;
 }
 
@@ -22,4 +23,3 @@
     float: left;
   }
 }
-

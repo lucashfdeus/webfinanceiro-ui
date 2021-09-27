@@ -17,6 +17,7 @@ import {DropdownModule} from 'primeng/dropdown';
 import { FormsModule }   from '@angular/forms';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {InputNumberModule} from 'primeng/inputnumber';
+import {InputMaskModule} from 'primeng/inputmask';
 
 
 
@@ -26,6 +27,9 @@ import {NavbarComponent} from './navbar/navbar.component';
 import { NavbarTesteComponent } from './navbar-teste/navbar-teste.component';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
 import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
+import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
+import { MessageComponent } from './message/message.component';
+import { LancamentosGridComponent } from './lancamentos-grid/lancamentos-grid.component';
 
 
 
@@ -38,7 +42,10 @@ import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-ca
     NavbarComponent,
     NavbarTesteComponent,
     PessoasPesquisaComponent,
-    LancamentoCadastroComponent
+    LancamentoCadastroComponent,
+    PessoaCadastroComponent,
+    MessageComponent,
+    LancamentosGridComponent
 
   ],
   imports: [
@@ -56,7 +63,8 @@ import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-ca
     DropdownModule,
     FormsModule,
     InputTextareaModule,
-    InputNumberModule
+    InputNumberModule,
+    InputMaskModule
   ],
   providers: [],
   bootstrap: [AppComponent]

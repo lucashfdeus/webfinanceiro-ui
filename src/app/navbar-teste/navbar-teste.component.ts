@@ -5,16 +5,13 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './navbar-teste.component.html',
   styleUrls: ['./navbar-teste.component.css']
 })
-export class NavbarTesteComponent{
+export class NavbarTesteComponent implements OnInit {
 
-  visibleSidebar1: any;
+  exibindoMenu = false;
 
-  visibleSidebar2: any;
+  constructor() { }
 
-  visibleSidebar3: any;
-
-  visibleSidebar4: any;
-
-  visibleSidebar5: any;
+  ngOnInit() {
+  }
 
 }
