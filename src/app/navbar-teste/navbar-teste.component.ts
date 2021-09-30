@@ -7,11 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarTesteComponent implements OnInit {
 
-  exibindoMenu = false;
-
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
 }

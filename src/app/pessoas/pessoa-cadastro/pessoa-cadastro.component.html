@@ -1,5 +1,5 @@
 <div class="container">
-  <form>
+  <form #lancamentoForm="ngForm">
 
     <!-- Tela responsiva para celular com campos full -->
 
@@ -10,9 +10,9 @@
 
         <div class="field col-12 md:col-12">
           <label>Nome Completo</label>
-          <input pInputText type="text" class="inputfield w-full"  name="nome"  ngModel #nome="ngModel" required minlength="4">
+          <input pInputText type="text" class="inputfield w-full"  name="nome"  ngModel #nome="ngModel" required minlength="8">
 
-          <app-message [control]="nome" error="required" text="Informe o Nome completo."></app-message>
+          <app-message [control]="nome" error="required" text="Informe o Nome Completo."></app-message>
 
           <app-message [control]="nome" error="minlength" text="Mínimo de {{ nome.errors?.minlength?.requiredLength }} caracteres"></app-message>
 
@@ -20,14 +20,17 @@
 
         <div class="field col-12 md:col-8">
           <label>Logradouro</label>
-          <input pInputText type="text" class="inputfield w-full" name="logradouro"  ngModel #logradouro="ngModel" required>
+          <input pInputText type="text" class="inputfield w-full" name="logradouro"  ngModel #logradouro="ngModel" required minlength="5">
 
           <app-message [control]="logradouro" error="required" text="Informe o Logradouro"></app-message>
+
+          <app-message [control]="logradouro" error="minlength" text="Mínimo de {{ logradouro.errors?.minlength?.requiredLength }} caracteres"></app-message>
+
 
         </div>
 
         <div class="field col-12 md:col-4 p-fluid">
-          <label>Número</label>
+          <label>Número de Telefone</label>
           <!-- <input pInputText type="text" class="inputfield w-full"> -->
           <p-inputMask mask="(99) 9 9999-9999" name="numero" ngModel #numero="ngModel" required ></p-inputMask>
 
@@ -67,14 +70,16 @@
 
         <div class="field col-12 md:col-6">
           <label>Estado</label>
-          <input pInputText type="text" class="inputfield w-full" name="estado" ngModel #estado="ngModel" required>
+          <input pInputText type="text" class="inputfield w-full" name="estado" ngModel #estado="ngModel" required minlength="2">
 
-          <app-message [control]="estado" error="required" text="Informe a Cidade."></app-message>
+         <app-message [control]="estado" error="required" text="Informe a Cidade."></app-message>
+
+         <app-message [control]="estado" error="minlength" text="Mínimo de {{ estado.errors?.minlength?.requiredLength }} caracteres"></app-message>
 
         </div>
 
         <div class="row">
-          <button pButton type="submit" label="Salvar" icon="pi pi-check"
+          <button pButton type="submit" label="Salvar"  [disabled]="lancamentoForm.invalid" icon="pi pi-check"
             class="btnsalvar p-button-success p-button-rounded"></button>
 
           <button pButton type="submit" label="Cancelar" icon="pi pi-times"

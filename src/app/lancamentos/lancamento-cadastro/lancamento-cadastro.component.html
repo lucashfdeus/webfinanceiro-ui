@@ -1,5 +1,6 @@
 <div class="container">
-  <form>
+  <form #lancamentoForm="ngForm">
+
     <div class="card grid">
 
       <div class="col-12">
@@ -7,14 +8,20 @@
       </div>
 
       <div class="col-12">
-        <p-selectButton [options]="tipos" #tipo></p-selectButton>
+        <p-selectButton [options]="tipos" name="tipo" #tipo required></p-selectButton>
       </div>
 
       <div class="col-12 md:col-6 lg:col-3 p-fluid">
         <label>Vencimento</label>
-        <p-calendar [showIcon]="true" [inline]="false" inputId="icon" dateFormat="dd/mm/yy" inputId="dateformat"
-          name="calendar1">
-        </p-calendar>
+        <!-- <p-calendar [showIcon]="true" [inline]="false" inputId="icon" dateFormat="dd/mm/yy" inputId="dateformat"
+          name="calendar1" [required]="true">
+        </p-calendar> -->
+
+        <p-calendar name="vencimento" dateFormat="dd/mm/yy" [readonlyInput]="false" [showIcon]="true"
+          ngModel #vencimento="ngModel" [required]="true"></p-calendar>
+
+        <app-message [control]="vencimento" error="required" text="Informe uma data de vencimento"></app-message>
+
       </div>
 
       <div class="col-12 md:col-6 lg:col-3 p-fluid">
@@ -60,8 +67,11 @@
 
       <div class="field col-6 p-fluid">
         <label>Pessoa</label>
-        <p-dropdown [options]="pessoas" placeholder="Selecione uma Pessoa" optionLabel="label" [showClear]="true"
-          [filter]="true" filterBy="label"></p-dropdown>
+        <!-- <p-dropdown [options]="pessoas" placeholder="Selecione uma Pessoa" [showClear]="true" [filter]="true"></p-dropdown> -->
+        <p-dropdown [options]="pessoas" placeholder="Selecione" [showClear]="true" [filter]="true" #pessoa></p-dropdown>
+
+
+
       </div>
 
 
@@ -71,7 +81,7 @@
       </div>
 
       <div class="row col-12">
-        <button pButton type="submit" label="Salvar" icon="pi pi-check"
+        <button pButton type="submit" label="Salvar" [disabled]="lancamentoForm.invalid" icon="pi pi-check"
           class="btnsalvar p-button-success p-button-rounded"></button>
 
         <button pButton type="submit" label="Cancelar" icon="pi pi-times"
