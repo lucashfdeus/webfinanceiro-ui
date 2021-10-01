@@ -1,38 +1,41 @@
 <div class="container">
   <div class="grid">
-    <div class="col-12">
-      <h1>Lançamentos</h1>
-    </div>
 
-    <div class="col-12 p-fluid">
-      <label>Descrição</label>
-      <input pInputText type="text">
-    </div>
-
-    <div class="col-12">
-      <label style="display: block">Vencimento</label>
-      <input pInputText type="text" style="width: 95px">
-
-      <label class="label">até</label>
-      <input pInputText type="text" style="width: 95px">
-    </div>
-
-    <div class="col-12">
-      <button pButton type="submit" label="Pesquisar" class="p-button-raised p-button-rounded"
-        icon="pi pi-search"></button>
-    </div>
-
-    <div class="grid">
+    <form autocomplete="off" (ngSubmit)="pesquisar()">
       <div class="col-12">
-        <app-lancamentos-grid [lancamentos]="lancamentos"></app-lancamentos-grid>
+        <h1>Lançamentos</h1>
+      </div>
+
+      <div class="col-12 p-fluid">
+        <label>Descrição</label>
+        <input pInputText type="text" name="descricao"
+          [(ngModel)]="descricao">
       </div>
 
       <div class="col-12">
-        <button pButton type="submit" label="Novo Lançamento" class="p-button-rounded" icon="pi pi-plus"></button>
+        <label style="display: block">Vencimento</label>
+        <input pInputText type="text" style="width: 95px">
+
+        <label class="label">até</label>
+        <input pInputText type="text" style="width: 95px">
       </div>
 
-    </div>
+      <div class="col-12">
+        <button pButton type="submit" label="Pesquisar" class="p-button-raised p-button-rounded"
+          icon="pi pi-search"></button>
+      </div>
 
+      <div class="grid">
+        <div class="col-12">
+          <app-lancamentos-grid [lancamentos]="lancamentos"></app-lancamentos-grid>
+        </div>
+
+        <div class="col-12">
+          <button pButton type="submit" label="Novo Lançamento" class="p-button-rounded" icon="pi pi-plus"></button>
+        </div>
+
+      </div>
+    </form>
   </div>
 
 </div>
