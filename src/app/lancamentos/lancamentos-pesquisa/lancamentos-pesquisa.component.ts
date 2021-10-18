@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiResponse, Lancamento } from './../../core/interfaces';
+import { LazyLoadEvent } from 'primeng/api';
+
+import { ApiResponse, Lancamento, LancamentoFiltro } from '../../core/interfaces';
 
 import { LancamentoService } from './../lancamento.service';
 
@@ -9,20 +11,38 @@ import { LancamentoService } from './../lancamento.service';
   styleUrls: ['./lancamentos-pesquisa.component.css']
 })
 export class LancamentosPesquisaComponent implements OnInit {
-
-  descricao: string = '';
-  lancamentos: Lancamento[] = [] ;
-
-
-  constructor(private lancamentoService: LancamentoService) {}
-
-  ngOnInit(): void {
-    this.pesquisar();
+  totalRegistros: number = 0
+  filtro: LancamentoFiltro = {
+    pagina: 0,
+    itensPorPagina: 5
   }
 
-  pesquisar(): void {
-    this.lancamentoService.pesquisar({ descricao: this.descricao})
-      .subscribe((dados: ApiResponse<Lancamento>) => this.lancamentos = dados.content);
+
+  lancamentos: Lancamento[] = [];
+
+
+  constructor(private lancamentoService: LancamentoService) { }
+
+  ngOnInit(): void {
+    // this.pesquisar();
+   // subistituido pelo método onLazyLoad
+  }
+
+  pesquisar(pagina: number = 0): void {
+    this.filtro.pagina = pagina
+    console.log(this.filtro);
+
+    this.lancamentoService.pesquisar(this.filtro)
+      .subscribe((dados: ApiResponse<Lancamento>) => {
+        this.lancamentos = dados.content
+        this.totalRegistros = dados.totalElements
+      });
+  }
+
+  carregarPagina(event: LazyLoadEvent){
+    const pagina = event!.first! / event!.rows!;
+    this.pesquisar(pagina);
+    console.log(event);
   }
 
 }

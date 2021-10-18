@@ -42,6 +42,7 @@
         <app-message [control]="descricao" error="minlength" text="Mínimo de {{ descricao.errors?.minlength?.requiredLength }} caracteres"></app-message>
 
         <!--
+          //validação direta sem o uso do modulo de mensagens
         <div *ngIf="descricao.hasError('required') && descricao.dirty" class="p-error">
           Informe uma descrição!
         </div> -->

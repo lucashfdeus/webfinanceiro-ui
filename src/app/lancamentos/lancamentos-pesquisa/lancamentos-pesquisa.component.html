@@ -1,23 +1,26 @@
 <div class="container">
-  <div class="grid">
+  <form autocomplete="off" (ngSubmit)="pesquisar()">
+    <div class="grid">
 
-    <form autocomplete="off" (ngSubmit)="pesquisar()">
       <div class="col-12">
         <h1>Lançamentos</h1>
       </div>
 
       <div class="col-12 p-fluid">
         <label>Descrição</label>
-        <input pInputText type="text" name="descricao"
-          [(ngModel)]="descricao">
+        <input pInputText type="text" name="descricao" [(ngModel)]="filtro.descricao">
       </div>
 
       <div class="col-12">
         <label style="display: block">Vencimento</label>
-        <input pInputText type="text" style="width: 95px">
+        <!-- <input pInputText type="text" style="width: 95px"> -->
+        <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{ width: '98px' }" name="vencimentoInicio"
+          [(ngModel)]="filtro.dataVencimentoInicio"></p-calendar>
 
         <label class="label">até</label>
-        <input pInputText type="text" style="width: 95px">
+        <!-- <input pInputText type="text" style="width: 95px"> -->
+        <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{ width: '98px' }" name="vencimentoFim"
+          [(ngModel)]="filtro.dataVencimentoFim"></p-calendar>
       </div>
 
       <div class="col-12">
@@ -25,17 +28,76 @@
           icon="pi pi-search"></button>
       </div>
 
-      <div class="grid">
-        <div class="col-12">
-          <app-lancamentos-grid [lancamentos]="lancamentos"></app-lancamentos-grid>
-        </div>
+    </div>
+  </form>
 
-        <div class="col-12">
-          <button pButton type="submit" label="Novo Lançamento" class="p-button-rounded" icon="pi pi-plus"></button>
-        </div>
+  <div class="grid">
+    <div class="col-12">
+      <p-table styleClass="p-datatable-sm" [value]="lancamentos" [responsive]="true"
+          [paginator]="true" [rows]="filtro.itensPorPagina"
+          [lazy]="true" [totalRecords]="totalRegistros"
+          (onLazyLoad)="carregarPagina($event)">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Pessoa</th>
+            <th>Descrição</th>
+            <th class="col-data-header">Vencimento</th>
+            <th class="col-data-header">Pagamento</th>
+            <th class="col-valor-header">Valor</th>
+            <th class="col-acoes-header"></th>
+          </tr>
+        </ng-template>
 
-      </div>
-    </form>
+        <ng-template pTemplate="body" let-lancamento>
+          <tr>
+            <td>
+              <span class="p-column-title">Pessoa</span>
+              {{ lancamento.pessoa }}
+            </td>
+
+            <td>
+              <span class="p-column-title">Descrição</span>
+              {{ lancamento.descricao }}
+            </td>
+
+            <td class="col-data">
+              <span class="p-column-title">Vencimento</span>
+              <span>{{ lancamento.dataVencimento | date:'dd/MM/yyyy' }}</span>
+            </td>
+
+            <td class="col-data">
+              <span class="p-column-title">Pagamento</span>
+              <span>{{ lancamento.dataPagamento | date:'dd/MM/yyyy' }}</span>
+            </td>
+
+            <td class="col-valor">
+              <span class="p-column-title">Valor</span>
+              <span [style.color]="lancamento.tipo === 'DESPESA' ? 'red' : 'blue'">{{ lancamento.valor |
+                number:'1.2-2'
+                }}</span>
+            </td>
+
+            <td class="col-acoes">
+              <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
+                class="p-button-sm p-button-rounded p-button-warning"></a>
+              <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
+                class="p-button-sm p-button-rounded p-button-danger"></button>
+            </td>
+
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="6">
+              Nenhum lançamento encontrado
+            </td>
+          </tr>
+        </ng-template>
+
+      </p-table>
+    </div>
   </div>
-
+  <div class="col-12">
+    <button pButton type="submit" label="Novo Lançamento" class="p-button-rounded" icon="pi pi-plus"></button>
+  </div>
 </div>

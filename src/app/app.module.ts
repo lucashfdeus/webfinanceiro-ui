@@ -1,19 +1,18 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { LancamentoService } from './lancamentos/lancamento.service';
+import { PessoaService } from './pessoas/pessoa.service';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ButtonModule } from 'primeng/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-
-import { NavbarTesteComponent } from './navbar-teste/navbar-teste.component';
-
 
 import { CoreModule } from './core/core.module';
 import { LancamentosModule } from './lancamentos/lancamentos.module';
 import { PessoasModule } from './pessoas/pessoas.module';
-import { LancamentoService } from './lancamentos/lancamento.service';
 
 
+import { NavbarTesteComponent } from './navbar-teste/navbar-teste.component';
 
 
 
@@ -24,14 +23,17 @@ import { LancamentoService } from './lancamentos/lancamento.service';
   ],
   imports: [
     BrowserModule,
-    ButtonModule,
+    BrowserAnimationsModule,
     HttpClientModule,
 
     CoreModule,
     LancamentosModule,
-    PessoasModule
+    PessoasModule,
   ],
-  providers: [LancamentoService],
+  providers: [
+    LancamentoService,
+    PessoaService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

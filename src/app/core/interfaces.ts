@@ -16,7 +16,7 @@ export interface ApiResponse<T> {
 }
 
 export interface Lancamento {
-  codigo: number,
+  id: number,
   descricao: string,
   dataVencimento: Date,
   dataPagamento?: Date,
@@ -28,15 +28,29 @@ export interface Lancamento {
 }
 
 export interface Categoria {
-  codigo: number,
+  id: number,
   nome: string
 }
 
 export interface Pessoa {
-  codigo: number,
+  id: number,
   nome: string,
   endereco: Endereco,
   ativo: boolean
+}
+
+export interface LancamentoFiltro {
+  descricao?: string,
+  dataVencimentoInicio?: Date,
+  dataVencimentoFim?: Date,
+  pagina: number,
+  itensPorPagina: number
+}
+
+export interface PessoaFiltro {
+  nome?: string;
+  pagina: number;
+  itensPorPagina: number;
 }
 
 interface Endereco {

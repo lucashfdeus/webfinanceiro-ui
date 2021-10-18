@@ -1,3 +1,7 @@
+import { HttpClientModule } from '@angular/common/http';
+import { LancamentoService } from './lancamento.service';
+import { CommonModule, DatePipe } from '@angular/common';
+import { InputMaskModule } from 'primeng/inputmask';
 import { SharedModule } from './../shared/shared.module';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { TooltipModule } from 'primeng/tooltip';
@@ -11,7 +15,6 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
-import { LancamentosGridComponent } from './lancamentos-grid/lancamentos-grid.component';
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
 import { NgModule } from '@angular/core';
 import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
@@ -20,13 +23,10 @@ import { MessageModule } from 'primeng/message';
 
 
 
+
 @NgModule({
-  declarations: [
-    LancamentoCadastroComponent,
-    LancamentosPesquisaComponent,
-    LancamentosGridComponent
-  ],
   imports: [
+    CommonModule,
     BrowserModule,
     InputTextModule,
     ButtonModule,
@@ -41,13 +41,24 @@ import { MessageModule } from 'primeng/message';
     FormsModule,
     InputTextareaModule,
     InputNumberModule,
+    InputMaskModule,
+    HttpClientModule,
 
     SharedModule
 
   ],
+  declarations: [
+    LancamentoCadastroComponent,
+    LancamentosPesquisaComponent,
+
+    ],
   exports: [
     LancamentoCadastroComponent,
     LancamentosPesquisaComponent
-  ]
+  ],
+  providers: [
+    DatePipe
+  ],
+
 })
 export class LancamentosModule { }
