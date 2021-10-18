@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { ApiResponse, Pessoa} from '../core/interfaces';
+import { ApiResponse, Pessoa } from '../core/interfaces';
 
 export class PessoaFiltro {
   nome?: string;
@@ -18,28 +18,38 @@ export class PessoaService {
 
   constructor(private http: HttpClient) { }
 
-  pesquisar(filtro: PessoaFiltro): Observable<any> {
+
+
+  pesquisar(filtro: PessoaFiltro): Observable<PessoaFiltro> {
 
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
 
     let params = new HttpParams()
-      .set('page', filtro.pagina)
-      .set('size', filtro.itensPorPagina);
+      .set('page', filtro.pagina.toString())
+      .set('size', filtro.itensPorPagina.toString());
+
 
     if (filtro.nome) {
       params = params.set('nome', filtro.nome);
     }
 
-    return this.http.get<Pessoa>(`${this.pessoasUrl}`, { headers, params });
+
+    console.log(params);
+
+
+    return this.http.get<PessoaFiltro>(`${this.pessoasUrl}`, { headers, params });
+
+
 
   }
 
   listarTodas(): Observable<Pessoa> {
     const headers = new HttpHeaders()
-      .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
-    let params = new HttpParams()
-    return this.http.get<Pessoa>(`${this.pessoasUrl}`, { headers, params });
+        .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+
+    return this.http.get<Pessoa>(`${this.pessoasUrl}`, { headers });
+
 
   }
 

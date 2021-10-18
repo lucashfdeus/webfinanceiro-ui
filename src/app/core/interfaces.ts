@@ -15,6 +15,12 @@ export interface ApiResponse<T> {
   empty: boolean
 }
 
+
+export interface Categoria {
+  id: number,
+  nome: string
+}
+
 export interface Lancamento {
   id: number,
   descricao: string,
@@ -26,19 +32,6 @@ export interface Lancamento {
   categoria: Categoria,
   pessoa: Pessoa
 }
-
-export interface Categoria {
-  id: number,
-  nome: string
-}
-
-export interface Pessoa {
-  id: number,
-  nome: string,
-  endereco: Endereco,
-  ativo: boolean
-}
-
 export interface LancamentoFiltro {
   descricao?: string,
   dataVencimentoInicio?: Date,
@@ -47,12 +40,12 @@ export interface LancamentoFiltro {
   itensPorPagina: number
 }
 
-export interface PessoaFiltro {
-  nome?: string;
-  pagina: number;
-  itensPorPagina: number;
+export interface Pessoa {
+  id: number,
+  nome: string,
+  endereco: Endereco,
+  ativo: boolean
 }
-
 interface Endereco {
   logradouro: string,
   numero: number,
@@ -62,3 +55,10 @@ interface Endereco {
   cidade: string,
   estado: string
 }
+
+export interface PessoaFiltro {
+  nome: string;
+  pagina: number;
+  itensPorPagina: number;
+}
+
