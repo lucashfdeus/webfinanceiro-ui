@@ -45,6 +45,14 @@ export class LancamentoService {
 
 
     return this.http.get<ApiResponse<Lancamento>>(`${this.lancamentosUrl}?resumo`, { headers, params });
+
+  }
+
+  excluir(id: number): Observable<void>{
+    const headers = new HttpHeaders()
+    .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+
+    return this.http.delete<void>(`${this.lancamentosUrl}/${id}`, {headers});
   }
 
 }

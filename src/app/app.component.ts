@@ -1,3 +1,4 @@
+import { ToastyConfig } from 'ng2-toasty';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,6 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  title = 'financeiro-ui';
+
+  constructor(private toastyConfig: ToastyConfig) {
+    this.toastyConfig.theme = 'bootstrap';
+    this.toastyConfig.position = 'top-right';
+    this.toastyConfig.timeout = 2000;
+  }
 
 }
 
