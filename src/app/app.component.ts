@@ -8,13 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  title = 'financeiro-ui';
-
-  constructor(private toastyConfig: ToastyConfig) {
+  constructor(
+    private toastyConfig: ToastyConfig,
+  ) {
     this.toastyConfig.theme = 'bootstrap';
     this.toastyConfig.position = 'top-right';
     this.toastyConfig.timeout = 2000;
   }
+
 
 }
 
